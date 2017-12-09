@@ -1,6 +1,6 @@
 {
   "name": "rest-flex",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A flexible REST server focused on rapid development.",
   "main": "dist/index.js",
   "scripts": {
