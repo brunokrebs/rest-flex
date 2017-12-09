@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
     "prepublishOnly": "tsc -p ./ --outDir dist/",
+    "start": "ts-node src/index.ts",
     "test": "mocha -r ts-node/register tests/**/*.spec.ts"
   },
   "repository": {
