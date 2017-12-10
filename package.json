@@ -8,7 +8,7 @@
     "publishTestResults": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "release": "release-it",
     "start": "ts-node src/index.ts",
-    "test": "nyc --reporter=lcov mocha -r ts-node/register -r source-map-support/register tests/**/*.spec.ts"
+    "test": "nyc --reporter=lcov --reporter=html mocha -r ts-node/register -r source-map-support/register tests/**/*.spec.ts"
   },
   "nyc": {
     "extension": [

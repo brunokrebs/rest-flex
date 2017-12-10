@@ -9,9 +9,6 @@ export {
 
 app.use(async function sayHi(ctx) {
   ctx.body = 'Hi!';
-  if (ctx.originalUrl === '/just-testing-integration-to-codacy') {
-    console.log('uncovered statement');
-  }
 });
 
 // running if called directly (i.e. through `node rest-flex`)
