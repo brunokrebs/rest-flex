@@ -3,7 +3,7 @@ import * as restFlex from  '../src/index';
 import * as WebRequest from 'web-request';
 
 describe('tests all the way', () => {
-  const app = restFlex.app.listen(3001);
+  const app = restFlex.app;
 
   it('should say hi to Bruno', async () => {
     const result = await WebRequest.get('http://localhost:3001/');
@@ -11,6 +11,6 @@ describe('tests all the way', () => {
   });
 
   after(async () => {
-    await app.close();
+    await restFlex.shutdown();
   })
 });
