@@ -1,24 +1,23 @@
 import * as parseArgs from 'command-line-args';
+import * as Koa from 'koa';
+
+const app = new Koa();
 
 export {
-  howdy, hello
+  app
 }
 
-function howdy(name: string): string {
-  return `Hi, ${name}`;
-}
-
-function hello(): string {
-  return 'Hello!';
-}
+app.use(async function sayHi(ctx) {
+  ctx.body = 'Hi!';
+});
 
 // running if called directly (i.e. through `node rest-flex`)
 if (require.main === module) {
   const argsDefinitions = [
-    { name: 'name', type: String }
+    { name: 'port', type: Number, defaultValue: 3001 }
   ];
 
   const args = parseArgs(argsDefinitions, { partial: true });
 
-  console.log(howdy(args.name));
+  app.listen(args.port);
 }
