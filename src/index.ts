@@ -1,15 +1,20 @@
 import * as parseArgs from 'command-line-args';
 import * as Koa from 'koa';
+import * as middlewares from './middlewares';
 
 export {
   app, shutdown
 }
 
 const app = new Koa();
+app.use(middlewares.exceptionHandler);
 
 let server;
 
 app.use(async function sayHi(ctx) {
+  if (ctx.originalUrl === '/forge-error') {
+    throw new Error('forging error for tests');
+  }
   ctx.body = 'Hi!';
 });
 
