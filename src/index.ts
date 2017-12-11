@@ -1,5 +1,6 @@
 import {start, shutdown, use} from './server';
 import * as middlewares from './middlewares';
+import * as cors from 'kcors';
 
 export {
   shutdown
@@ -7,6 +8,7 @@ export {
 
 use(middlewares.exceptionHandler);
 use(middlewares.sayHi);
+use(cors());
 
 // running if called directly (i.e. through `node rest-flex`)
 // `global['it']` was used to trigger the server when running tests
