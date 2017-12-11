@@ -8,6 +8,7 @@ export {
 }
 
 use(middlewares.exceptionHandler);
+use(middlewares.security());
 use(middlewares.sayHi);
 use(cors());
 use(bodyParser());

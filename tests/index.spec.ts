@@ -1,10 +1,19 @@
+import './mocks';
 import * as chai from 'chai';
 import * as restFlex from  '../src/index';
 import * as request from 'request-promise';
 
 describe('tests all the way', () => {
   it('should say hi to Bruno', async () => {
-    const result = await request('http://localhost:3001/');
+    const options = {
+      uri: 'http://localhost:3001/',
+      headers: {
+        'Authorization': 'Bearer some.access.token'
+      },
+      json: true
+    };
+
+    const result = await request(options);
     chai.assert(result === 'Hi!', 'It should say "Hi!"');
   });
 
