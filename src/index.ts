@@ -1,20 +1,20 @@
-import {start, shutdown, use} from './server';
+import * as server from './server';
 import * as middlewares from './middlewares';
-import * as cors from 'kcors';
-import * as bodyParser from 'koa-bodyparser';
 
 export {
-  shutdown
+  stop
 }
 
-use(middlewares.exceptionHandler);
-use(middlewares.security());
-use(middlewares.sayHi);
-use(cors());
-use(bodyParser());
+const stop = server.shutdown;
 
-// running if called directly (i.e. through `node rest-flex`)
-// `global['it']` was used to trigger the server when running tests
+server.use(middlewares.exceptionHandler);
+server.use(middlewares.cors);
+server.use(middlewares.security);
+server.use(middlewares.sayHi);
+server.use(middlewares.bodyParser);
+
+// should we run it automatically?
 if (require.main === module || global['it']) {
-  start();
+  // yes when called like `node rest-flex` and on automated tests
+  server.start();
 }

@@ -27,6 +27,6 @@ describe('tests all the way', () => {
   });
 
   after(async () => {
-    await restFlex.shutdown();
+    await restFlex.stop();
   })
 });
